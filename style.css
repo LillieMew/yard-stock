@@ -14,3 +14,30 @@ body {
   margin: 0 auto;
   padding: 16px;
 }
+:root {
+  --accent: #F5A623;
+}
+
+.chip-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.chip {
+  padding: 10px 18px;        
+  border-radius: 999px;      
+  border: 1px solid #ddd;
+  background: #f0f0f0;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;              
+  white-space: nowrap;
+}
+
+.chip.selected {             
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
