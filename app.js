@@ -36,7 +36,7 @@ const products =  [
     length: "4.8m",
     stock: 23,
     location: "Warehouse, Shelf 3C",
-    lastSync: "1 week ago",
+    lastSync: "1 hour ago",
     flagged: false
   },
   {
@@ -85,7 +85,7 @@ const products =  [
       length: "5.4m",
       stock: 7,
       location: "Warehouse, Shelf 4A",
-      lastSync: "1 week ago",
+      lastSync: "5 days ago",
       flagged: false
   }
 ];
