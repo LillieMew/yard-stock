@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 18px;          /* large base for daylight/glove readability */
+  line-height: 1.4;
+  color: #111;
+  background: #fff;
+}
+
+#app {
+  max-width: 480px;         /* phone-first */
+  margin: 0 auto;
+  padding: 16px;
+}
