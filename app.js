@@ -91,12 +91,14 @@ const products =  [
 ];
 
 function renderCard(product) {
+  const parts = [product.category, product.size, product.treatment, product.length];
+  const name = parts.filter((part) => part).join(" - ");
   const flagMarker = product.flagged ? "⚠" : "";
   const flagIcon = product.flagged ? "🚩" : "";
   return `
     <li class="card">
       <div class="card-header">
-        <h2>${product.category} - ${product.size} - ${product.treatment} - ${product.length}</h2>
+        <h2>${name}</h2>
         <span>${flagIcon}</span>
       </div>
       <p class="stock-number">${product.stock}</p>
@@ -123,14 +125,8 @@ showProducts(products);
 const searchBox = document.getElementById("search-box");
 
 searchBox.addEventListener("input", () => {
-  const term = searchBox.value.toLowerCase();
-
-  const matches = products.filter((product) => {
-    const name = `${product.category} ${product.size} ${product.treatment} ${product.length}`.toLowerCase();
-    return name.includes(term);
-  });
-
-  showProducts(matches);
+  activeFilters.search = searchBox.value.toLowerCase();
+  applyFilters();
 });
 
 const chips = document.querySelectorAll("[data-category]");
@@ -142,22 +138,24 @@ chips.forEach((chip) => {
 
     const category = chip.dataset.category;
     updateFilterVisibility(category);
-    if (category === "Timber" || category === "All") {
-      showProducts(products);
-    } else {
-      const matches = products.filter((p) => p.category === category);
-      showProducts(matches);
-    }
+    activeFilters.category = category;
+    applyFilters();
   });
 });
 
 const activeFilters = {
+  search: "",
+  category: "All",
   size: null,
   length: null,
   treatment: null
 };
+
 function applyFilters() {
   let matches = products;
+  if (activeFilters.category !== "All") {
+  matches = matches.filter((p) => p.category === activeFilters.category);
+}
 
   if (activeFilters.size) {
     matches = matches.filter((p) => p.size === activeFilters.size);
@@ -168,6 +166,12 @@ function applyFilters() {
   if (activeFilters.treatment) {
     matches = matches.filter((p) => p.treatment === activeFilters.treatment);
   }
+   if (activeFilters.search) {
+  matches = matches.filter((p) => {
+    const name = `${p.category} ${p.size} ${p.treatment || ""} ${p.length}`.toLowerCase();
+    return name.includes(activeFilters.search);
+  });
+}
 
   showProducts(matches);
 }
@@ -177,7 +181,7 @@ const treatmentChips = document.querySelectorAll("[data-treatment]");
 const treatmentGroup = document.getElementById("treatment-group");
 
 function updateFilterVisibility(category) {
-  if (category === "Timber") {
+  if (category === "Timber" || category === "All") {
     treatmentGroup.style.display = "block";
   } else {
     treatmentGroup.style.display = "none";
