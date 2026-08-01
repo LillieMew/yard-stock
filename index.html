@@ -11,7 +11,19 @@
 <body>
   <main id="app">
     <h1>Yard Stock</h1>
-    <p>Shell is running.</p>
+    <section>
+      <label for="search-box">Search stock</label>
+      <input type="search" id="search-box" placeholder="4x2 treated">
+      <div class="chip-row">
+        <button type="button" class="chip selected">All</button>
+        <button type="button" class="chip">Timber</button>
+        <button type="button" class="chip">Plumbing</button>
+        <button type="button" class="chip">Fixings</button>
+        <button type="button" class="chip">Electrical</button>
+      </div>
+    </section>
+
+  <ul id="results"></ul>
   </main>
   <script src="app.js"></script>
 </body>
