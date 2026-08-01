@@ -15,16 +15,37 @@
       <label for="search-box">Search stock</label>
       <input type="search" id="search-box" placeholder="4x2 treated">
       <div class="chip-row">
-        <button type="button" class="chip selected">All</button>
-        <button type="button" class="chip">Timber</button>
-        <button type="button" class="chip">Plumbing</button>
-        <button type="button" class="chip">Fixings</button>
-        <button type="button" class="chip">Electrical</button>
+        <button type="button" class="chip selected" data-category="all">All</button>
+        <button type="button" class="chip" data-category="Timber">Timber</button>
+        <button type="button" class="chip" data-category="Plumbing">Plumbing</button>
+        <button type="button" class="chip" data-category="Fixings">Fixings</button>
       </div>
     </section>
 
   <ul id="results"></ul>
   </main>
+    <p>Size:</p>
+    <div class="chip-row">
+      <button type="button" class="chip" data-size="4x2">4x2</button>
+      <button type="button" class="chip" data-size="5x2">5x2</button>
+      <button type="button" class="chip" data-size="6x2">6x2</button>
+    </div>
+    <p>Length:</p>
+    <div class="chip-row">
+      <button type="button" class="chip" data-length="3.6m">3.6m</button>
+      <button type="button" class="chip" data-length="4.2m">4.2m</button>
+      <button type="button" class="chip" data-length="4.8m">4.8m</button>
+      <button type="button" class="chip" data-length="5.4m">5.4m</button>
+    </div>
+    <div id="treatment-group">
+      <p>Type:</p>
+      <div class="chip-row">
+        <button type="button" class="chip" data-treatment="Treated">Treated</button>
+        <button type="button" class="chip" data-treatment="Pressure treated">Pressure treated</button>
+        <button type="button" class="chip" data-treatment="PAR">PAR</button>
+        <button type="button" class="chip" data-treatment="Rough">Rough</button>
+      </div>
+    </div>
   <script src="app.js"></script>
 </body>
 </html>
